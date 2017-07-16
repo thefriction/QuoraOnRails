@@ -1,0 +1,39 @@
+// Place all the styles related to the Home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+header {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    border-bottom: 1px solid grey;
+    div.logo {
+        img {
+        	height: 50px;	
+        }
+    }
+
+    nav {
+    	ul{
+    		display: flex;
+    		li{
+    			list-style: none;
+    			margin-right: 10px;
+    		}
+    	}
+    }
+}
+#question_{
+	background:#f4f4f4;
+	color:blue;
+	width:30%;
+	height:15px;
+	
+	padding:20px;
+	align:center;
+}
+#answer_{
+	background:lightgreen;
+	color:#ed589d;
+}

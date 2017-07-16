@@ -1,0 +1,40 @@
+<h1>Home#index PAGE</h1>
+<p>
+	This is <%=@name%>
+</p>
+<%= link_to "Logout",destroy_user_session_path, method: :delete %>
+<br>
+<!-- Below is code for making the question -->
+<%= current_user.email %>
+
+<%= form_tag( controller:"home", action:"question",method:"post") do %>
+	<%= label_tag("Question")%><br>
+	<%= text_area_tag(:content)%><br>
+	<%= submit_tag("Ask Question")%>
+	<%end%>
+	<%= form_tag( controller:"home", action:"upvote_q",method:"post") do %>
+		<%=  hidden_field_tag(:id_of_asker,q.id) %>
+		<%= submit_tag("Upvote")%><br>
+	<%end%>
+<br><br><br>
+
+
+
+<% Question.all.each do |q|%>
+	<div id="question_"><strong>Question : </strong><%= q.content%><br></div>
+	<strong>Asked By : </strong><%= q.User.email%><br>
+
+	<% Answer.where(Question_id: q.id).each do |a|%>
+	<strong>Answer by : </strong><%=a.User.name%><br>
+	<span id="answer_"><strong>Answer is : </strong><%=a.content%></span><br>
+	<br>
+	<%end%>
+	<%= form_tag( controller:"home", action:"answer",method:"post") do %>
+	<%= text_area_tag(:content)%><br>
+	<%=  hidden_field_tag(:id_of_question,q.id) %>
+	<%= submit_tag("Answer")%><br>
+	<%end%>
+	<br><br><br>
+<%end%>
+<br><br>
+
